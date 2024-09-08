@@ -49,7 +49,6 @@ WSL)
     ;;
 esac
 
-restic self-update
 rclone selfupdate
 
 print_version
