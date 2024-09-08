@@ -5,33 +5,33 @@ unset HISTFILE
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
 # shellcheck disable=SC1091
-source "$script_dir/version.sh"
+source "$script_dir/../version.sh"
 
 # shellcheck disable=SC1091
-source "$script_dir/config/_platform.sh"
+source "$script_dir/../config/_platform.sh"
+
+mountpoint=$1
 
 echo "Umounting \"$mountpoint\"..."
 echo
-
-mountpoint=$1
 
 platform=$(get_platform)
 
 case $platform in
 Android)
-    fusermount -uz "$mountpoint"
+    fusermount3 -uz "$mountpoint" 2>/dev/null || true
 
     ;;
 Darwin)
-    umount "$mountpoint"
+    umount "$mountpoint" 2>/dev/null || true
 
     ;;
 Linux)
-    fusermount -uz "$mountpoint"
+    fusermount3 -uz "$mountpoint" 2>/dev/null || true
 
     ;;
 WSL)
-    fusermount -uz "$mountpoint"
+    fusermount3 -uz "$mountpoint" 2>/dev/null || true
 
     ;;
 *)

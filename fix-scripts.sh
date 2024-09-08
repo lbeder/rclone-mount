@@ -5,8 +5,7 @@ script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 # shellcheck disable=SC1091
 source "$script_dir/config/_platform.sh"
 
-CONFIG_DIR=~/.config/backup
-SCRIPTS=("./*" "./config/*" "./cmd/*" "./cmd/**/*" "./templates/*" "$CONFIG_DIR/*/hooks")
+SCRIPTS=("./*" "./config/*" "./cmd/*" "./cmd/**/*")
 
 echo "Configuring scripts..."
 echo

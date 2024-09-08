@@ -4,7 +4,11 @@ script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
 # shellcheck disable=SC1091
 source "$script_dir/version.sh"
-SCRIPTS=("./*" "./cmd/*" "./cmd/**/*")
+
+# shellcheck disable=SC1091
+source "$script_dir/config/_credentials.sh"
+
+SCRIPTS=("./*" "./config/*" "./cmd/*" "./cmd/**/*")
 
 echo "Configuring scripts..."
 echo

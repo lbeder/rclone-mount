@@ -8,12 +8,11 @@ print_version() {
     fi
 
     echo
-    echo -e "Backup Suite v$VERSION"
+    echo -e "Rclone Mount v$VERSION"
     echo
 
     echo "Tools:"
 
-    echo "  * $(restic version | cut -d' ' -f1-2)"
     echo "  * $(rclone version | head -n 1)"
 
     echo
