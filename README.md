@@ -87,7 +87,13 @@ Remember to run `fix-scripts.sh` whenever you add new scripts which sets them as
 To mount a repository, you can use the `cmd/mount.sh` script and specifying the mountpoint:
 
 ```sh
-sudo -E ./cmd/mount.sh [REPO] [MOUNTPOINT]
+sudo -E ./cmd/mount.sh [REPO:PATH] [MOUNTPOINT]
+```
+
+For example:
+
+```sh
+sudo -E ./cmd/mount.sh remote:/a/b/ /mnt/mount
 ```
 
 Please keep in mind that you will require a root permission to access the mountpoint.

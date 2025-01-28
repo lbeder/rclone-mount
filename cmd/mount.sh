@@ -11,13 +11,13 @@ source "$script_dir/../version.sh"
 repo=$1
 mountpoint=$2
 
-cleanup() {
-    cleanup_run
-    # Use a local flag to track if cleanup has run
-    if [[ -z "${cleanup_run:-}" ]]; then
-        cleanup_run=1
+cleanup_called=0
 
+cleanup() {
+    if [ "$cleanup_called" -eq 0 ]; then
         "$script_dir"/umount.sh "$mountpoint" 2>/dev/null || true
+
+        cleanup_called=1
     fi
 }
 
@@ -28,4 +28,4 @@ mkdir -p "$mountpoint"
 echo "Mounting $repo to \"$mountpoint\"..."
 echo
 
-rclone mount -v --allow-other "$repo": "$mountpoint" "${@:3}"
+rclone mount -v --allow-other "$repo" "$mountpoint" "${@:3}"
