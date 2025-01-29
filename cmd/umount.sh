@@ -11,13 +11,16 @@ source "$script_dir/../version.sh"
 # shellcheck disable=SC1091
 source "$script_dir/../config/_platform.sh"
 
+# Get mountpoint from first argument
 mountpoint=$1
 
 echo "Umounting \"$mountpoint\"..."
 echo
 
+# Detect current platform
 platform=$(get_platform)
 
+# Handle unmounting based on platform
 case $platform in
 Android)
     fusermount3 -uz "$mountpoint" 2>/dev/null || true
