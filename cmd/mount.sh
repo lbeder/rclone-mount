@@ -8,6 +8,9 @@ script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 # shellcheck disable=SC1091
 source "$script_dir/../version.sh"
 
+# shellcheck disable=SC1091
+source "$script_dir/../config/_platform.sh"
+
 # Get repository and mountpoint from arguments
 repo=$1
 mountpoint=$2
