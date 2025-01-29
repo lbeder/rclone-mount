@@ -17,29 +17,20 @@ mountpoint=$1
 echo "Umounting \"$mountpoint\"..."
 echo
 
-# Detect current platform
+# Detect the current platform
 platform=$(get_platform)
 
 # Handle unmounting based on platform
 case $platform in
-Android)
+Android | Linux | WSL)
     fusermount3 -uz "$mountpoint" 2>/dev/null || true
-
     ;;
+
 Darwin)
     umount "$mountpoint" 2>/dev/null || true
-
     ;;
-Linux)
-    fusermount3 -uz "$mountpoint" 2>/dev/null || true
 
-    ;;
-WSL)
-    fusermount3 -uz "$mountpoint" 2>/dev/null || true
-
-    ;;
 *)
     fatal "Unsupported platform $platform"
-
     ;;
 esac

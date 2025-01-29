@@ -12,6 +12,34 @@ source "$script_dir/../version.sh"
 repo=$1
 mountpoint=$2
 
+# Detect the current platform
+platform=$(get_platform)
+
+# Handle unmounting based on platform
+case $platform in
+Android | Linux | WSL)
+    # Check if mountpoint is already mounted
+    if mountpoint -q "$mountpoint"; then
+        echo "\"$mountpoint\" appears to be already mounted"
+
+        exit 0
+    fi
+    ;;
+
+Darwin)
+    # Check if mountpoint is already mounted by checking if directory is not empty
+    if [ "$(ls -A "$mountpoint" 2>/dev/null)" ]; then
+        echo "\"$mountpoint\" appears to be already mounted"
+
+        exit 0
+    fi
+    ;;
+
+*)
+    fatal "Unsupported platform $platform"
+    ;;
+esac
+
 # Track if cleanup has been called to avoid multiple unmounts
 cleanup_called=0
 

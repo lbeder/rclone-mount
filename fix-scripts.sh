@@ -18,20 +18,10 @@ done
 
 platform=$(get_platform)
 
-case $platform in
-Android)
-    # Fix termux shebangs such that it'd be possible to execute the scripts from tasker
+# Fix termux shebangs on Android to enable execution from tasker
+if [ "$platform" = "Android" ]; then
     for scripts in "${SCRIPTS[@]}"; do
         # shellcheck disable=SC2086
         find $scripts -type f -name "*.sh" -exec termux-fix-shebang {} + 2>/dev/null || true
     done
-
-    ;;
-Darwin) ;;
-Linux) ;;
-WSL) ;;
-*)
-    fatal "Unsupported platform $platform"
-
-    ;;
-esac
+fi

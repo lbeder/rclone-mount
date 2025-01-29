@@ -11,42 +11,30 @@ source "$script_dir/config/_platform.sh"
 
 platform=$(get_platform)
 
+# Get platform name for display
+platform_name=$(get_platform_name)
+
+echo "Updating dependencies for $platform_name..."
+echo
+
 case $platform in
 Android)
-    echo "Updating dependencies for Android..."
-    echo
-
     pkg update
     pkg upgrade tsu rclone libfuse3
-
     ;;
-Darwin)
-    echo "Updating dependencies for Mac OS..."
-    echo
 
+Darwin)
     brew update
     brew upgrade rclone libfuse
-
     ;;
-Linux)
-    echo "Updating dependencies for Linux..."
-    echo
 
+Linux | WSL)
     sudo apt update
     sudo apt upgrade rclone libfuse3
-
     ;;
-WSL)
-    echo "Updating dependencies for WSL..."
-    echo
 
-    sudo apt update
-    sudo apt upgrade rclone libfuse3
-
-    ;;
 *)
     fatal "Unsupported platform $platform"
-
     ;;
 esac
 
