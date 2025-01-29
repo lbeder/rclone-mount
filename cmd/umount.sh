@@ -23,11 +23,11 @@ platform=$(get_platform)
 # Handle unmounting based on platform
 case $platform in
 Android | Linux | WSL)
-    fusermount3 -uz "$mountpoint" 2>/dev/null || true
+    fusermount3 -uz "$mountpoint" || true
     ;;
 
 Darwin)
-    umount "$mountpoint" 2>/dev/null || true
+    umount "$mountpoint" || true
     ;;
 
 *)

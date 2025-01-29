@@ -49,7 +49,6 @@ cleanup_called=0
 # Cleanup function to unmount on exit
 cleanup() {
     if [ "$cleanup_called" -eq 0 ]; then
-
         # Attempt to unmount and suppress errors
         "$script_dir"/umount.sh "$mountpoint" 2>/dev/null || true
 
