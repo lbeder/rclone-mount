@@ -5,16 +5,14 @@ export VERSION=0.2
 
 print_version() {
     if ${SKIP_VERSION:-false}; then
-        exit 1
+        echo
+        echo -e "Rclone Mount v$VERSION"
+        echo
+
+        echo "Tools:"
+
+        echo "  * $(rclone version | head -n 1)"
+
+        echo
     fi
-
-    echo
-    echo -e "Rclone Mount v$VERSION"
-    echo
-
-    echo "Tools:"
-
-    echo "  * $(rclone version | head -n 1)"
-
-    echo
 }
