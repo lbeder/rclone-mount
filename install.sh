@@ -7,6 +7,7 @@ script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 source "$script_dir/version.sh"
 
 # shellcheck disable=SC1091
+source "$script_dir/config/_utils.sh"
 source "$script_dir/config/_platform.sh"
 
 SCRIPTS=("./*" "./config/*" "./cmd/*" "./cmd/**/*")
