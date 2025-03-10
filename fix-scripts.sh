@@ -18,7 +18,7 @@ done
 
 platform=$(get_platform)
 
-# Fix termux shebangs on Android to enable execution from tasker
+# Fix termux shebangs on Android to enable execution from Tasker
 if [ "$platform" = "Android" ]; then
     for scripts in "${SCRIPTS[@]}"; do
         # shellcheck disable=SC2086

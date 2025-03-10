@@ -6,6 +6,9 @@ script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 # shellcheck disable=SC1091
 source "$script_dir/version.sh"
 
+# shellcheck disable=SC1091
+source "$script_dir/config/_platform.sh"
+
 SCRIPTS=("./*" "./config/*" "./cmd/*" "./cmd/**/*")
 
 echo "Configuring scripts..."
@@ -19,7 +22,7 @@ done
 platform=$(get_platform)
 
 # Install platform-specific dependencies
-echo "Installing dependencies for $(get_platform_name)..."
+echo "Installing dependencies for $platform..."
 echo
 
 case $platform in

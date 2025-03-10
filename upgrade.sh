@@ -11,10 +11,7 @@ source "$script_dir/config/_platform.sh"
 
 platform=$(get_platform)
 
-# Get platform name for display
-platform_name=$(get_platform_name)
-
-echo "Updating dependencies for $platform_name..."
+echo "Updating dependencies for $platform..."
 echo
 
 case $platform in

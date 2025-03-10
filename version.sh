@@ -1,7 +1,7 @@
 #!/usr/bin/env -S bash
 set -e
 
-export VERSION=0.1
+export VERSION=0.2
 
 print_version() {
     if ${SKIP_VERSION:-false}; then
